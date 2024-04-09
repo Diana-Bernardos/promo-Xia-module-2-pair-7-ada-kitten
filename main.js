@@ -1,6 +1,6 @@
 'use strict';
 
-const kittenOne = `<li class="card">
+/* const kittenOne = `<li class="card">
 <article>
   <img
     class="card_img"
@@ -45,7 +45,7 @@ const kittenThree = `<li class="card">
   bella mirada se ha convertido en una de sus señas de identidad.
   Sus ojos son grandes y las orejas resultan largas y en punta.
 </p>
-</li>`;
+</li>`; */
 
 document.querySelector (".js-list").innerHTML = kittenOne + kittenTwo + kittenThree;
 
@@ -72,7 +72,10 @@ const kittenList = document.querySelector(".js-list");
 const btnSearch = document.querySelector(".js-btn-search");
 
 btnSearch.addEventListener("click", (event) => {
+ 
+  event.preventDefault();
   const descrSearchText = input_search_desc.value;
+
   kittenList.innerHTML = "";
 if( kittenOne.includes(descrSearchText) ) {
 
@@ -89,4 +92,23 @@ if( kittenOne.includes(descrSearchText) ) {
     kittenList.innerHTML += kittenThree;
   //Completa el código
   }
-})
+});
+/*Hemos probado el btn de searchtext para buscar desde el formulario con una palabra (elegante) que solo salga el gato que tiene esa descripcion y funciona*/
+
+const kittenOneImage="https://dev.adalab.es/gato-siames.webp";
+const kittenOneName="Anastacio";
+const kittenOneDesc="Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos hace 500 años, donde tuvo su origen muy posiblemente.";
+const kittenOneRace="Siames";
+
+const kittenTwoImage="https://dev.adalab.es/sphynx-gato.webp";
+const kittenTwoName="Fiona";
+const kittenTwoDesc="roduce fascinación y curiosidad. Exótico, raro, bello, extraño… hasta con pinta de alienígena han llegado a definir a esta raza gatuna que se caracteriza por la «ausencia» de pelo.";
+const kittenTwoRace="Sphynx";
+
+const kittenThreeImage="https://dev.adalab.es/maine-coon-cat.webp";
+const kittenThreeName="Cielo";
+const kittenThreeDesc="Tienen la cabeza cuadrada y los ojos simétricos, por lo que su bella mirada se ha convertido en una de sus señas de identidad.Sus ojos son grandes y las orejas resultan largas y en punta.";
+const kittenThreeRace="Maine Coon";
+
+
+
