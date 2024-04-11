@@ -52,12 +52,13 @@ const menuAdd = document.querySelector(".js-btn-add");
 const formAdd = document.querySelector(".js-form");
 const btnCancel = document.querySelector(".js-btn-cancel");
 
-menuAdd.addEventListener("click", (event) => {
+
+/* menuAdd.addEventListener("click", (event) => {
     event.preventDefault();
     console.log("add click");
     formAdd.classList.toggle("collapsed");
 
-});
+}); */
 
 btnCancel.addEventListener("click", (event) => {
     event.preventDefault();
@@ -146,8 +147,30 @@ document.querySelector (".js-list").innerHTML = kittenOne + kittenTwo + kittenTh
 function showNewCatForm() {
   formAdd.classList.remove('collapsed');
 }
-function hideNewCatForm() {
+function hiddeNewCatForm() {
   formAdd.classList.add('collapsed');
+}
+
+function hanndleclickNewCatForm(event){
+  event.preventDefault();
+
+  if (formAdd.classList.contains("collapsed")){
+    showNewCatForm();
+    console.log("hola");
+  }else{
+    hiddeNewCatForm();
+  }
+}
+menuAdd.addEventListener("click", hanndleclickNewCatForm)
+
+
+const btnkittenadd = document.querySelector(".js-btn-addkitten");
+
+btnkittenadd.addEventListener("click", addNewKitten);
+
+function addNewKitten(event){
+
+  console.log("kitten");
 }
 
 
