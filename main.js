@@ -57,7 +57,6 @@ const btnCancel = document.querySelector(".js-btn-cancel");
     event.preventDefault();
     console.log("add click");
     formAdd.classList.toggle("collapsed");
-
 }); */
 
 btnCancel.addEventListener("click", (event) => {
@@ -160,18 +159,43 @@ function hanndleclickNewCatForm(event){
   }else{
     hiddeNewCatForm();
   }
-}
-menuAdd.addEventListener("click", hanndleclickNewCatForm)
+};
 
+menuAdd.addEventListener("click", hanndleclickNewCatForm);
+
+const inputName = document.querySelector(".js_input_name");
+const inputRace = document.querySelector(".js_input_race");
+const inputDescription = document.querySelector(".js_input_description");
 
 const btnkittenadd = document.querySelector(".js-btn-addkitten");
 
+
 btnkittenadd.addEventListener("click", addNewKitten);
-
+//1. Dar las clases a los input
+//2. Pintarlo en el html
 function addNewKitten(event){
-
-  console.log("kitten");
+  event.preventDefault(); 
+  const valueName = inputName.value;
+  const valueRace = inputRace.value; 
+  const valueDescription = inputDescription.value; 
+  console.log(valueName); //si pongo comillas me pone el string
+  console.log(valueRace);
+  console.log(valueDescription);
 }
+
+// nos queda pintar en el html la UL cuando añades el gatito
+const ul = document.querySelector(".js_ul");
+
+//trabajar esto de aquí abajo
+/* function renderKitten(url, desc, name, race) {
+  ul.innerHTML += <li>
+    <img src="${url}"/>
+    <p>"${description}"</p>
+    </li>;
+    console.log("hola");
+    
+} */
+  
 
 
 
