@@ -70,7 +70,7 @@ const resetForm = document.querySelector(".js-form-add");
 
 const input_search_desc = document.querySelector('.js_in_search_desc');
 
-const kittenList = document.querySelector(".js-list");
+const kittenList = document.querySelector(".js_ul");
 const btnSearch = document.querySelector(".js-btn-search");
 
 btnSearch.addEventListener("click", (event) => {
@@ -82,17 +82,15 @@ btnSearch.addEventListener("click", (event) => {
 if( kittenOne.includes(descrSearchText) ) {
 
     kittenList.innerHTML = kittenOne; 
-  //Completa el código
   }
   
   if( kittenTwo.includes(descrSearchText) ) {
     kittenList.innerHTML += kittenTwo;
-  //Completa el código
   }
   
   if( kittenThree.includes(descrSearchText) ) {
     kittenList.innerHTML += kittenThree;
-  //Completa el código
+  
   }
 });
 /*Hemos probado el btn de searchtext para buscar desde el formulario con una palabra (elegante) que solo salga el gato que tiene esa descripcion y funciona*/
@@ -134,12 +132,12 @@ Sus ojos son grandes y las orejas resultan largas y en punta.
 const kittenThreeRace = `<h4 class="card_race">Maine Coon</h4>`;
 
 
-const kittenOne = `${kittenOneImage + kittenOneName + kittenOneDesc + kittenOneRace}` ;
-const kittenTwo = `${kittenTwoImage + kittenTwoName + kittenTwoDesc + kittenTwoRace}` ;
-const kittenThree = `${kittenThreeImage + kittenThreeName + kittenThreeDesc + kittenThreeRace}` ;
+const kittenOne = `<li class="card">${kittenOneImage + kittenOneName  + kittenOneRace + kittenOneDesc}</li>` ;
+const kittenTwo = `<li class="card">${kittenTwoImage + kittenTwoName + kittenTwoRace + kittenTwoDesc}</li>` ;
+const kittenThree = `<li class="card">${kittenThreeImage + kittenThreeName + kittenThreeRace + kittenThreeDesc}</li>` ;
 
 
-document.querySelector (".js-list").innerHTML = kittenOne + kittenTwo + kittenThree ; 
+document.querySelector (".js_ul").innerHTML = kittenOne + kittenTwo + kittenThree ; 
 
 
 
@@ -163,38 +161,50 @@ function hanndleclickNewCatForm(event){
 
 menuAdd.addEventListener("click", hanndleclickNewCatForm);
 
+const inputUrl = document.querySelector(".js_input_url");
 const inputName = document.querySelector(".js_input_name");
 const inputRace = document.querySelector(".js_input_race");
 const inputDescription = document.querySelector(".js_input_description");
 
 const btnkittenadd = document.querySelector(".js-btn-addkitten");
 
+//esqueleto, pintamos en el html la UL cuando añades el gatito
+
+function renderKitten(url, desc, name, race) {
+  kittenList.innerHTML += `<li class="card">
+  <article>
+    <img
+      class="card_img"
+      src="${url}"
+      alt="siames-cat"
+    />
+    <h3 class="card_title">${name}</h3>
+    <h4 class="card_race">${race}</h4>
+    <p class="card_description">${desc}</p>
+  </article>
+</li>`;
+    console.log("hola");
+};
 
 btnkittenadd.addEventListener("click", addNewKitten);
 //1. Dar las clases a los input
 //2. Pintarlo en el html
 function addNewKitten(event){
   event.preventDefault(); 
+  const valueUrl = inputUrl.value;
   const valueName = inputName.value;
   const valueRace = inputRace.value; 
   const valueDescription = inputDescription.value; 
   console.log(valueName); //si pongo comillas me pone el string
   console.log(valueRace);
   console.log(valueDescription);
-}
+  //sustuimos los valores delos values 
+  renderKitten(valueUrl, valueName, valueRace, valueDescription);
+};
 
-// nos queda pintar en el html la UL cuando añades el gatito
-const ul = document.querySelector(".js_ul");
+//Crear objetos de cada gato, convertir cada gatito en un objeto
 
-//trabajar esto de aquí abajo
-/* function renderKitten(url, desc, name, race) {
-  ul.innerHTML += <li>
-    <img src="${url}"/>
-    <p>"${description}"</p>
-    </li>;
-    console.log("hola");
-    
-} */
+
   
 
 
