@@ -170,7 +170,7 @@ const btnkittenadd = document.querySelector(".js-btn-addkitten");
 
 //esqueleto, pintamos en el html la UL cuando añades el gatito
 
-function renderKitten(url, desc, name, race) {
+/* function renderKitten(url, desc, name, race) {
   kittenList.innerHTML += `<li class="card">
   <article>
     <img
@@ -184,7 +184,7 @@ function renderKitten(url, desc, name, race) {
   </article>
 </li>`;
     console.log("hola");
-};
+}; */
 
 btnkittenadd.addEventListener("click", addNewKitten);
 //1. Dar las clases a los input
@@ -205,9 +205,91 @@ function addNewKitten(event){
 //Crear objetos de cada gato, convertir cada gatito en un objeto
 
 
+const kittenData_1 = {
+  image: 'https://dev.adalab.es/gato-siames.webp',
+  name: 'Anastacio',
+  desc: ' Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos hace 500 años, donde tuvo su origen muy posiblemente.',
+  race: 'Siamés',
+};
   
+const kittenData_2 = {
+  image: 'https://dev.adalab.es/sphynx-gato.webp',
+  name: 'Fiona',
+  desc: ' Produce fascinación y curiosidad. Exótico, raro, bello,extraño…hasta con pinta de alienígena han llegado a definir a esta raza gatuna que se caracteriza por la «ausencia» de pelo',
+  race: 'Sphynx',
+};
 
+const kittenData_3 = {
+  image: 'https://dev.adalab.es/maine-coon-cat.webp',
+  name: 'Cielo',
+  desc: ' PTienen la cabeza cuadrada y los ojos simétricos, por lo que subella mirada se ha convertido en una de sus señas de identidad.Sus ojos son grandes y las orejas resultan largas y en punta',
+  race: 'Maine Coon',
+};
+const kittenDataList=[kittenData_1, kittenData_2, kittenData_3];
+const kittenData={
+  image:"",
+  name:"",
+  desc:"",
+  race:"",
+  
+};
+function renderKitten(kittenData){
 
+  
+kittenList.innerHTML+=`<li class="card">
+<article>
+  <img
+    class="card_img"
+    src="${kittenData.image}"
+    alt="siames-cat"
+  />
+  <h3 class="card_title">${kittenData.name}</h3>
+  <h4 class="card_race">${kittenData.race}</h4>
+  <p class="card_description">${kittenData.desc}</p>
+</article>
+</li>`;
+console.log("pintaalgo");
+};
+function renderKittenList(kittenDataList) {
 
+  //Completa el código:
+  //Vaciamos el innerHTML del <ul> de la página.
+  kittenList.innerHTML="";
+  //Iteramos sobre el listado de gatitos
+  for(const KittenItem  of  kittenDataList ){
+    kittenList.innerHTML+=renderKitten(KittenItem);
+    
+  }
+  //Y por cada iteración pintamos un gatito.
+  //utilizando la función renderKitten(kittenItem)
+};
 
+function filterKitten(event) {
+  /* event.preventDefault(); */
+  const descrSearchText = input_search_desc.value;
+  kittenList.innerHTML = '';
+  for (const kittenItem of kittenDataList) {
+    //Completa el código
+    if(kittenItem.desc === valueInput){
+      kittenList.innerHTML+= `<li class="card">
+      <article>
+        <img
+          class="card_img"
+          src="${kittenData.image}"
+          alt="siames-cat"
+        />
+        <h3 class="card_title">${kittenData.name}</h3>
+        <h4 class="card_race">${kittenData.race}</h4>
+        <p class="card_description">${kittenData.desc}</p>
+      </article>
+      </li>`;
+    //Comprueba si cada gatito contiene la descripción
+    //Si la contiene pintamos un gatito
+    //utilizando la función renderKitten(kittenItem)
+  }
+}
+};
+filterKitten();
+
+//errores funcion filterkitten.
 
